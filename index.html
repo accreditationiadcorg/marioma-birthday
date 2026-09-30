@@ -409,11 +409,39 @@
 
         }
 
+
+        /* =========================================
+           مفاجأة 1 أكتوبر لمريومة 💗
+           ========================================= */
+        #october-surprise { display:none; position:fixed; inset:0; z-index:999999; width:100vw; height:100vh; overflow:hidden; background:radial-gradient(circle at 50% 20%, rgba(255,255,255,.9), transparent 35%), linear-gradient(135deg,#ffe1ef 0%,#fff0f7 45%,#ffd6e9 100%); align-items:center; justify-content:center; text-align:center; direction:rtl; }
+        #october-surprise::before,#october-surprise::after { content:"💗  💕  💗  💕  💗"; position:absolute; width:100%; left:0; font-size:2rem; opacity:.35; animation:floatingHearts 5s ease-in-out infinite; }
+        #october-surprise::before { top:8%; } #october-surprise::after { bottom:8%; animation-delay:2s; }
+        .october-content { position:relative; z-index:2; width:min(90%,600px); padding:30px 20px; animation:surpriseAppear 1.2s ease forwards; }
+        .teddy-bear { font-size:clamp(100px,22vw,170px); line-height:1; margin-bottom:20px; animation:teddyWave 1.8s ease-in-out infinite; filter:drop-shadow(0 12px 18px rgba(255,42,133,.2)); }
+        .october-title { margin:0 0 15px; color:#ff2a85; font-size:clamp(2rem,7vw,3.5rem); font-weight:800; line-height:1.5; text-shadow:0 5px 15px rgba(255,42,133,.15); }
+        .october-message { margin:0; color:#555; font-size:clamp(1.1rem,4vw,1.5rem); font-weight:600; line-height:2; }
+        .october-heart { display:block; margin-top:18px; font-size:2.2rem; animation:heartbeat 1.2s infinite; }
+        @keyframes surpriseAppear { from { opacity:0; transform:translateY(30px) scale(.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes teddyWave { 0%,100% { transform:rotate(-4deg) translateY(0); } 50% { transform:rotate(4deg) translateY(-8px); } }
+        @keyframes heartbeat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.25); } }
+        @keyframes floatingHearts { 0%,100% { transform:translateY(0); opacity:.25; } 50% { transform:translateY(-15px); opacity:.5; } }
     </style>
 </head>
 
 
 <body>
+<!-- =========================================
+     مفاجأة 1 أكتوبر لمريومة 💗
+     ========================================= -->
+<div id="october-surprise">
+    <div class="october-content">
+        <div class="teddy-bear">🧸👋</div>
+        <h1 class="october-title">كل سنة وانتي طيبة يا مريم 💗💗</h1>
+        <p class="october-message">أشوفك السنة الجاية 🥹💕</p>
+        <span class="october-heart">💗 ✨ 💗 ✨ 💗</span>
+    </div>
+</div>
+
 
 <header>
 
@@ -839,6 +867,28 @@
 
 
 <script>
+/* =========================================
+   إخفاء الموقع بالكامل يوم 1 أكتوبر
+   ========================================= */
+function checkOctoberSurprise() {
+    const now = new Date();
+    const surpriseDate = new Date(2026, 9, 1, 0, 0, 0, 0);
+    const surpriseScreen = document.getElementById("october-surprise");
+    if (!surpriseScreen) return;
+    if (now >= surpriseDate) {
+        surpriseScreen.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        const audio = document.getElementById("birthday-audio");
+        if (audio) { audio.pause(); audio.currentTime = 0; }
+    } else {
+        surpriseScreen.style.display = "none";
+        document.body.style.overflow = "";
+    }
+}
+checkOctoberSurprise();
+setInterval(checkOctoberSurprise, 1000);
+
+
 
 /*
 =========================================================
